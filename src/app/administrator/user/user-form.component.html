@@ -1,0 +1,68 @@
+<div class="modal-header">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">×</span>
+  </button>
+  <h4 class="modal-title w-100" id="myModalLabel">Create User</h4>
+</div>
+<div class="modal-body">
+<form [formGroup] = 'form'>
+        <div class="form-row">
+          <div class="col">
+                <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i style="font-size: 15px" class="fa fa-user pr-2"></i></div>
+                        </div>
+                        <input mdbInput type="text" formControlName="name" class="form-control py-0" id="inlineFormInputGroupUsername2" placeholder="First Name">
+                      </div>  
+                              </div>
+          <div class="col">
+                <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i style="font-size: 15px" class="fa fa-user pr-2"></i></div>
+                        </div>
+                        <input mdbInput type="text" formControlName="username" class="form-control py-0" id="inlineFormInputGroupUsername2" placeholder="UserName">
+                      </div>            </div>
+          
+        </div>
+        
+        <div class="form-row" style="padding-top: 10px;">
+                
+                <div class="col">
+                        <div class="input-group mb-2 mr-sm-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><i style="font-size: 15px" class="fa fa-user pr-2"></i></div>
+                          </div>
+                          <input mdbInput type="text" formControlName="email" class="form-control py-0" id="inlineFormInputGroupUsername2" placeholder="Email Id">
+                        </div>                
+                    </div>
+                <div class="col">
+                        <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text"><i style="font-size: 15px" class="fa fa-key pr-2"></i></div>
+                                </div>
+                                <input mdbInput type="text" class="form-control py-0" formControlName="password" id="inlineFormInputGroupUsername2" placeholder="Password">
+                              </div>                  </div>
+              </div>
+              
+                  <div class="form-row" style="padding-top: 10px;">
+                        <div class="col">
+                        <select class="browser-default custom-select" formControlName="role">
+                            <option selected>Select Role</option>
+                                <option *ngFor="let element of roleList" [value]="element.name">{{element.name}}</option>
+                              </select>
+                              </div>
+                              
+                              <div class="col">
+                                    <select class="browser-default custom-select" formControlName="reportingId">
+                                            <option selected>Select Reporting To</option>
+                                            <option *ngFor="let element of userList" [value]="element.userId">{{element.username}}</option>
+                                            
+                                          </select>
+                            </div>
+                  </div>
+      </form>
+</div>
+<div class="modal-footer">
+  <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="modalRef.hide()" mdbWavesEffect>Close</button>
+  <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="save()" mdbWavesEffect>Save!</button>
+</div>

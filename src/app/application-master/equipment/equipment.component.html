@@ -1,0 +1,45 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto" style="margin-top:5px;margin-left: -21px!important;">
+                <button mdbBtn type="button"  gradient="blue" rounded="true" mdbWavesEffect (click)="openModal()">Create Equipment</button>
+            </div>
+            <button (click)="openWaitingModal()">sucess</button>
+            
+            <div class="col-md-4 mx-auto">
+            </div>
+          <div class="col-md-4 mx-auto">
+            <div class="md-form">
+              <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="searchItems()" id="search-input"
+                     mdbInput>
+              <label for="search-input">Filter Table</label>
+            </div>
+          </div>
+          <table style="margin-top: -20px;" mdbTable #tableEl="mdbTable" stickyHeader="true" hover="true" striped="true" class="z-depth-1">
+            <thead class="sticky-top">
+            <tr>
+              <th *ngFor="let head of headElements; let i = index" [mdbTableSort]="elements" [sortBy]="headElements[i]"
+                  scope="col">{{head | titlecase}} <i class="fa fa-sort"></i>
+              </th>
+            </tr>
+            </thead>
+            <tbody #row>
+            <tr mdbTableCol (rowCreated)="onRowCreate($event)" (rowRemoved)="onRowRemove($event)" *ngFor="let el of elements; let i = index">
+              <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row">{{i + 1}}</th>
+              <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" class="red-text">{{el.equipmentname}}</td>
+          
+            </tr>
+            </tbody>
+            <tfoot class="grey lighten-5 w-100">
+            <tr>
+              <td colspan="8">
+                <mdb-table-pagination [tableEl]="tableEl" paginationAlign="" [searchDataSource]="elements"></mdb-table-pagination>
+              </td>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      
+      
+      <!-- **************************************** -->
+      
